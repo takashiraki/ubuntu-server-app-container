@@ -11,7 +11,10 @@ services:
       # - vendor-store:/var/www/html/vendor
       - ./php/000-default.conf:/etc/apache2/sites-available/000-default.conf
     networks:
-      - my_proxy_network
+      default:
+      my_proxy_network:
+        aliases:
+          - hoge1-container
 
 # volumes:
 #   vendor-store:
