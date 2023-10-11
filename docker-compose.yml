@@ -1,0 +1,21 @@
+version: '3'
+
+services:
+  php:
+    build: ./php
+    environment:
+      VIRTUAL_HOST: ${VIRTUAL_HOST}
+      TZ: Asia/Tokyo
+    volumes:
+      - ./src:/var/www/html
+      # - vendor-store:/var/www/html/vendor
+      - ./php/000-default.conf:/etc/apache2/sites-available/000-default.conf
+    networks:
+      - my_proxy_network
+
+# volumes:
+#   vendor-store:
+
+networks:
+  my_proxy_network:
+    external: true
